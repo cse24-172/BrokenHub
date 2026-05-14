@@ -1,0 +1,30 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.brokenhub">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="BrokenHub"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.BrokenHub">
+
+        <!-- ✅ Make LoginActivity the launcher -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Other activities -->
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".FilterActivity" />
+        <activity android:name=".ChatActivity" />
+
+    </application>
+</manifest>
+

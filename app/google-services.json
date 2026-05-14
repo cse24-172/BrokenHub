@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "878630470472",
+    "project_id": "brokenhub-50cb8",
+    "storage_bucket": "brokenhub-50cb8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878630470472:android:b104535a5bab6a38fea97d",
+        "android_client_info": {
+          "package_name": "com.example.brokenhub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpTwAZxmgDQ18JOueoRPOTK6lAOvO0Y1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
