@@ -6,7 +6,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.brokenhub.data.AppDatabase
-import com.example.brokenhub.data.Listing
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,8 +21,6 @@ class ReservationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_reservation)
 
         db = AppDatabase.getDatabase(this)
-
-        // ✅ Get listing ID passed from previous screen
         listingId = intent.getIntExtra("listing_id", -1)
 
         val tvDetails = findViewById<TextView>(R.id.tvDetails)
@@ -32,8 +29,13 @@ class ReservationActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val listing = db.listingDao().getAllListings().find { it.id == listingId }
             withContext(Dispatchers.Main) {
-                if (listing != null) {
-                    tvDetails.text = "${listing.title}\nPrice: BWP ${listing.price}\nDeposit: BWP ${listing.depositAmount}"
+                listing?.let {
+                    tvDetails.text = getString(
+                        R.string.reservation_details,
+                        it.title,
+                        it.price,
+                        it.depositAmount
+                    )
                 }
             }
         }
@@ -47,17 +49,23 @@ class ReservationActivity : AppCompatActivity() {
 
                     val receipt = "REF-${System.currentTimeMillis()}"
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(this@ReservationActivity, "Reservation successful! Receipt: $receipt", Toast.LENGTH_LONG).show()
-                        finish() // go back after reservation
+                        Toast.makeText(
+                            this@ReservationActivity,
+                            getString(R.string.reservation_success, receipt),
+                            Toast.LENGTH_LONG
+                        ).show()
+                        finish()
                     }
                 } else {
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(this@ReservationActivity, "Room already reserved!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this@ReservationActivity,
+                            getString(R.string.reservation_already_reserved),
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
         }
     }
 }
-
-

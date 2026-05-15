@@ -1,24 +1,27 @@
 package com.example.brokenhub.data
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface ListingDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(listing: Listing)
-
     @Query("SELECT * FROM listings")
     suspend fun getAllListings(): List<Listing>
 
-    @Query("SELECT * FROM listings WHERE price <= :maxPrice")
-    suspend fun filterByPrice(maxPrice: Double): List<Listing>
+    @Query("SELECT * FROM listings WHERE ownerUid = :uid")
+    suspend fun getListingsByOwner(uid: String): List<Listing>
 
-    @Query("SELECT * FROM listings WHERE location LIKE :location")
-    suspend fun filterByLocation(location: String): List<Listing>
+    @Insert
+    suspend fun insertListing(listing: Listing)
 
-    @Query("SELECT * FROM listings WHERE availabilityDate = :date")
-    suspend fun filterByDate(date: String): List<Listing>
+    @Insert
+    suspend fun insertAll(listings: List<Listing>)
 
     @Update
     suspend fun update(listing: Listing)
 }
+
+
+

@@ -9,10 +9,9 @@ data class Listing(
     val title: String,
     val price: Double,
     val location: String,
-    val type: String,
-    val amenities: String,
+    val ownerUid: String,
     val availabilityDate: String,
     val depositAmount: Double,
-    val imageUrl: String,
     var reserved: Boolean = false
 )
+

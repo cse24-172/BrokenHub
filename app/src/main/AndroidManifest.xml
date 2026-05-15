@@ -1,18 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.brokenhub">
 
     <application
         android:allowBackup="true"
+        android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
-        android:label="BrokenHub"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BrokenHub">
 
-        <!-- ✅ Make LoginActivity the launcher -->
+        <!-- Launcher activity -->
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
+            android:exported="true"> <!-- REQUIRED for Android 12+ -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -20,11 +21,13 @@
         </activity>
 
         <!-- Other activities -->
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".FilterActivity" />
-        <activity android:name=".ChatActivity" />
+        <activity android:name=".SignupActivity" android:exported="false"/>
+        <activity android:name=".StudentActivity" android:exported="false"/>
+        <activity android:name=".LandlordActivity" android:exported="false"/>
+
+
 
     </application>
 </manifest>
+
 

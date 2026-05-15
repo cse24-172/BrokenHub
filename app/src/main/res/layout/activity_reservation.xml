@@ -1,21 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="24dp"
+    android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/tvDetails"
-        android:text="Listing details will appear here"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"/>
+        android:paddingBottom="12dp" />
 
     <Button
         android:id="@+id/btnReserve"
-        android:text="Pay Deposit  &amp; Reserve"
+        android:text="Reserve Now"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"/>
+        android:layout_height="wrap_content" />
 </LinearLayout>
+

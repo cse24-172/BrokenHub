@@ -1,15 +1,8 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Light theme -->
-    <style name="Theme.BrokenHub" parent="Theme.AppCompat.Light.NoActionBar">
+<resources>
+    <!-- App theme -->
+    <style name="Theme.BrokenHub" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
-    </style>
-
-    <!-- Dark theme (optional) -->
-    <style name="Theme.BrokenHub.Dark" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryDark">@color/purple_700</item>
-        <item name="colorAccent">@color/teal_200</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorSecondary">@color/teal_200</item>
     </style>
 </resources>

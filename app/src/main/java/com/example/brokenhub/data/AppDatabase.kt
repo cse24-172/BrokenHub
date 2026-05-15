@@ -5,16 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-// ✅ Add all your entities here
-@Database(
-    entities = [User::class, Listing::class],
-    version = 2,
-    exportSchema = false   // disables schema export warning
-)
+@Database(entities = [Listing::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
-
-    // ✅ Declare all DAOs
-    abstract fun userDao(): UserDao
     abstract fun listingDao(): ListingDao
 
     companion object {
@@ -26,15 +18,14 @@ abstract class AppDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "app_database"
-                )
-                    // ✅ Auto‑wipe and rebuild if schema changes (safe for dev, not prod)
-                    .fallbackToDestructiveMigration()
-                    .build()
-
+                    "brokenhub_db"
+                ).build()
                 INSTANCE = instance
                 instance
             }
         }
     }
 }
+
+
+

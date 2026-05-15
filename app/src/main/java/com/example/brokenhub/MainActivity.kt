@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
@@ -34,7 +35,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             BrokenHubTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ListingScreen(db = db)
+                    ListingScreen(db = db, modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -42,7 +43,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ListingScreen(db: AppDatabase) {
+fun ListingScreen(db: AppDatabase, modifier: Modifier = Modifier) {
     val dao = db.listingDao()
     var listings by remember { mutableStateOf(listOf<Listing>()) }
 
@@ -53,7 +54,7 @@ fun ListingScreen(db: AppDatabase) {
         }
     }
 
-    LazyColumn {
+    LazyColumn(modifier = modifier) {
         items(listings) { listing ->
             Text(text = "${listing.title} - BWP ${listing.price} - ${listing.location}")
         }
