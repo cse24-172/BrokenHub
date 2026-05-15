@@ -10,7 +10,7 @@ object DatabaseSeeder {
             val dao = db.listingDao()
             if (dao.getAllListings().isEmpty()) {
                 val sampleListings = (1..50).map {
-                    Listing(
+                    ListingEntity(
                         title = "House #$it near UB",
                         price = 1000.0 + it,
                         location = "Gaborone",

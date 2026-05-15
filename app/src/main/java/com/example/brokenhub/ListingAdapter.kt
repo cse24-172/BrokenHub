@@ -5,41 +5,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.brokenhub.R
-import com.example.brokenhub.data.Listing
 
-class ListingAdapter(private val allListings: List<Listing>) :
-    RecyclerView.Adapter<ListingAdapter.ViewHolder>() {
+class ListingsAdapter(private val listings: List<Listing>) :
+    RecyclerView.Adapter<ListingsAdapter.ListingViewHolder>() {
 
-    private var filtered = allListings.toMutableList()
-
-    fun filter(query: String) {
-        filtered = allListings.filter {
-            it.title.contains(query, true) ||
-                    it.location.contains(query, true) ||
-                    it.price.toString().contains(query)
-        }.toMutableList()
-        notifyDataSetChanged()
+    class ListingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val title: TextView = itemView.findViewById(R.id.listingTitle)
+        val price: TextView = itemView.findViewById(R.id.listingPrice)
+        val location: TextView = itemView.findViewById(R.id.listingLocation)
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val title: TextView = view.findViewById(R.id.tvTitle)
-        val price: TextView = view.findViewById(R.id.tvPrice)
-        val location: TextView = view.findViewById(R.id.tvLocation)
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListingViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_listing, parent, false)
-        return ViewHolder(view)
+        return ListingViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val listing = filtered[position]
+    override fun onBindViewHolder(holder: ListingViewHolder, position: Int) {
+        val listing = listings[position]
         holder.title.text = listing.title
-        holder.price.text = "BWP ${listing.price}"
-        holder.location.text = listing.location
+        holder.price.text = "Price: ${listing.price}"
+        holder.location.text = "Location: ${listing.location}"
     }
 
-    override fun getItemCount() = filtered.size
+    override fun getItemCount(): Int = listings.size
 }

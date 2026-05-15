@@ -9,13 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
-import com.example.brokenhub.data.Listing
 import com.example.brokenhub.ListingAdapter
 
 class ListingsFragment : Fragment() {
 
     private lateinit var adapter: ListingAdapter
-    private val listings = mutableListOf<Listing>()
+    private val listings = mutableListOf<`ListingEntity.kt`>()
     private val dbRef = FirebaseDatabase.getInstance().getReference("listings")
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -31,7 +30,7 @@ class ListingsFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 listings.clear()
                 for (child in snapshot.children) {
-                    child.getValue(Listing::class.java)?.let { listings.add(it) }
+                    child.getValue(`ListingEntity.kt`::class.java)?.let { listings.add(it) }
                 }
                 adapter.notifyDataSetChanged()
             }

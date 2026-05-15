@@ -10,13 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.example.brokenhub.data.Listing
 import com.example.brokenhub.ListingAdapter
 
 class MyListingsFragment : Fragment() {
 
     private lateinit var adapter: ListingAdapter
-    private val myListings = mutableListOf<Listing>()
+    private val myListings = mutableListOf<`ListingEntity.kt`>()
     private val dbRef = FirebaseDatabase.getInstance().getReference("listings")
     private val uid = FirebaseAuth.getInstance().currentUser!!.uid
 
@@ -33,7 +32,7 @@ class MyListingsFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 myListings.clear()
                 for (child in snapshot.children) {
-                    child.getValue(Listing::class.java)?.let { myListings.add(it) }
+                    child.getValue(`ListingEntity.kt`::class.java)?.let { myListings.add(it) }
                 }
                 adapter.notifyDataSetChanged()
             }

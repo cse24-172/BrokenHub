@@ -1,14 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:gravity="center"
+    android:padding="24dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/studentWelcome"
         android:text="Student Dashboard"
         android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/browseListingsBtn"
+        style="@style/Widget.BrokenHub.Button"
+        android:text="Browse Listings"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>

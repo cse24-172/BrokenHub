@@ -16,7 +16,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.brokenhub.ui.theme.BrokenHubTheme
 import com.example.brokenhub.data.AppDatabase
 import com.example.brokenhub.data.DatabaseSeeder
-import com.example.brokenhub.data.Listing
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -45,7 +44,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ListingScreen(db: AppDatabase, modifier: Modifier = Modifier) {
     val dao = db.listingDao()
-    var listings by remember { mutableStateOf(listOf<Listing>()) }
+    var listings by remember { mutableStateOf(listOf<`ListingEntity.kt`>()) }
 
     // Load listings from DB
     LaunchedEffect(Unit) {

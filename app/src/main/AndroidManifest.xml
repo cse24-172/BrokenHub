@@ -24,6 +24,9 @@
         <activity android:name=".SignupActivity" android:exported="false"/>
         <activity android:name=".StudentActivity" android:exported="false"/>
         <activity android:name=".LandlordActivity" android:exported="false"/>
+        <activity android:name=".ListingsActivity" android:exported="false"/>
+        <activity android:name=".AddListingActivity" android:exported="false"/>
+
 
 
 
